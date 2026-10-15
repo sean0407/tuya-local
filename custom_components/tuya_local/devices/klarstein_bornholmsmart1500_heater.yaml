@@ -3,6 +3,9 @@ products:
   - id: movachsonarakbut
     manufacturer: Klarstein
     model: Bornholm Smart 1500
+  - id: s4shpp1z1ltkaf9y
+    manufacturer: Klarstein
+    model: Bornholm Smart 1500
 entities:
   - entity: climate
     translation_key: heater
@@ -123,11 +126,14 @@ entities:
     category: diagnostic
     dps:
       - id: 11
-        type: integer
+        type: string
         optional: true
         name: sensor
         unit: min
         class: measurement
+        mapping:
+          - dps_val: standby
+            value: 0
   - entity: binary_sensor
     class: problem
     category: diagnostic
@@ -146,14 +152,6 @@ entities:
         type: bitfield
         optional: true
         name: fault_code
-  - entity: switch
-    translation_key: sleep
-    category: config
-    dps:
-      - id: 102
-        optional: true
-        type: boolean
-        name: switch
   - entity: light
     translation_key: display
     category: config
@@ -161,3 +159,8 @@ entities:
       - id: 104
         type: boolean
         name: switch
+        mapping:
+          - dps_val: true
+            value: false
+          - dps_val: false
+            value: true
